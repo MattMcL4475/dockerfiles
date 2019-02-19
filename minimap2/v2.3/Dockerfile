@@ -5,11 +5,11 @@
 #   sudo docker build -t minimap2 .
 ###############################################
 
-# Use ubuntu 16.04 base image
-FROM ubuntu:16.04
+# Use ubuntu 18.04 base image
+FROM ubuntu:18.04
 
 # File author/maintainer info
-MAINTAINER Sophie Lemoine <slemoine@biologie.ens.fr>
+LABEL authors="Sophie Lemoine <slemoine@biologie.ens.fr>,Matt McLoughlin <mattmcl@microsoft.com>" 
 
 # set non-interactive mode
 ENV DEBIAN_FRONTEND noninteractive
@@ -26,7 +26,7 @@ WORKDIR /usr/local
 RUN git clone https://github.com/lh3/minimap2 
 WORKDIR /usr/local/minimap2 
 RUN pwd
-RUN git checkout v2.3
+RUN git checkout v2.15
 RUN make && chmod 755 minimap2 
 ENV PATH $PATH:/usr/local/minimap2
 
